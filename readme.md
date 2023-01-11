@@ -1,2 +1,1 @@
-Hello, this is my folder of python creations as a beginner
-Learning git and github
+Here i will post some projects that are of some real use case
