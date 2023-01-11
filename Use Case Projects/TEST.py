@@ -13,10 +13,18 @@ def extract ():
 
 def transform (soup):
     divs=soup.find_all("div", class_ = "job-data")
+    for items in divs:
+        try:
+            x=items.find("a")
+            job_position = x.find("span", class_="job-position").text
+            print("This is the job position:", job_position[40:])
+        except AttributeError:
+            pass
 
-    for items in divs[:1]:
-        x=items.find("a").text
-    print("ovo je x",x)
+
+
+
+    #print("ovo je x",x)
 
 
 
