@@ -1,8 +1,6 @@
-import urllib.request
 
 import requests
 from bs4 import BeautifulSoup
-import re
 
 def extract ():
     headers = {"User-Agent" : "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36"}
@@ -16,12 +14,13 @@ def transform (soup):
     for items in divs:
         try:
             x=items.find("a")
-            job_position = x.find("span", class_="job-position").text
-            print("This is the job position:", job_position[40:])
+            job_position = x.find("span", class_="job-position").text.strip()
+            print("This is the job position:",job_position)
         except AttributeError:
             pass
 
-
+#moram pronac zasto mi ne prikazuje ove sve koji su ispod
+#tipa ima 3 oglasa u jednon boksu i on mi prikaze samo jednog
 
 goveda=extract()
 transform(goveda)
