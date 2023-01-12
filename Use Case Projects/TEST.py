@@ -16,12 +16,16 @@ def transform (soup):
             x=items.find("a")
             job_position = x.find("span", class_="job-position").text.strip()
             print("This is the job position:", job_position)
+
             job_location=x.find("span", class_ ="job-location").text
             print("Location:",job_location)
+
             job_date=x.find("time", class_= "deadline").text
             print("This is the deadline:", job_date)
+
             job_link=x.get("href")
             print(job_link)
+
             listofjobs.append({
                 "Position": job_position,
                 "Location": job_location,
@@ -36,7 +40,8 @@ for x in range (1,50):
     transform(goveda)
 
 
-print("alooo",listofjobs)
+print("This is list of jobs: \n",listofjobs)
 
-jobs_df = pd.DataFrame(listofjobs)
-jobs_df.to_csv('jobs.csv', index=False)
+#creating csv file
+#jobs_df = pd.DataFrame(listofjobs)
+#jobs_df.to_csv('jobss.csv', index=False)
