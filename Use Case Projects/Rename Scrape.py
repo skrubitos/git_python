@@ -24,23 +24,23 @@ def transform (soup): #trazimo podatke
         try:
             x=items.find("a")
             job_position = x.find("span", class_="job-position").text.strip()
-            job_position = job_position.replace(" (m/ž)", "").replace(" (m/f)", "").replace("(f/m)", "").replace("(w/m/x)","")
+            job_position = job_position.replace(" (m/ž)", "").replace(" (m/f)", "").replace("(f/m)", "").replace("(w/m/x)","").replace("(d/m/f)","")
             trans_table = str.maketrans("ČŠĆĐŽčšćđž", "CSCDZcscdz")
             job_position = job_position.translate(trans_table)
 
 
-            print("Job position:", job_position, end="" )
+            print("Job position:", job_position)
             job_link=x.get("href")
 
-            print(    "Company :",ime_kompanije(job_link))
+            print("Company :",ime_kompanije(job_link))
             job_location=x.find("span", class_ ="job-location").text
-            #print("Location: ",job_location)
+            print("Location: ",job_location)
 
             job_date=x.find("time", class_= "deadline").text
-            #print("This is the deadline:", job_date)
+            print("This is the deadline:", job_date)
 
 
-            #print("Link: ", job_link)
+            print("Link: ", job_link,"\n")
 
             listofjobs.append({
                 "Position": job_position,
